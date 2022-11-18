@@ -1,0 +1,43 @@
+<footer class="footer">
+  <div class="footer__content">
+    <div class="footer__column">
+      <ul>
+        <li>
+          <p>Calystoa is made for the folks who wants to build THEIR perfect online articles about their favourite
+            games.
+            With Calystoa you can easily display information from steam, and write your dream game guide, or what ever
+            you want to write about the game!</p>
+          <br>
+          <p>
+            Calystoa gives you the opportunity to create your own articles, and share them with the world!
+          </p>
+        </li>
+      </ul>
+    </div>
+    <hr>
+    <div class="footer__column">
+      <h3>Your links</h3>
+      <ul>
+        <% if (user) { %>
+          <li><a href="/user/<%= user.id %>">Your profile</a></li>
+          <li><a href="/article/create">Create new article</a></li>
+          <li><a href="/logout">Logout</a></li>
+          <% } else { %>
+            <li><a href="/api/auth/steam">Login with Steam</a></li>
+            <% } %>
+      </ul>
+    </div>
+    <hr>
+    <div class="footer__column">
+      <h3>Need help?</h3>
+      <ul>
+        <li><a id="mail" href="mailto:nomail@gmai1.com">Send a mail</a></li>
+        <li><a id="mail" href="mailto:nomail@gmai1.com">Send a personal mail</a></li>
+      </ul>
+    </div>
+  </div>
+  <hr>
+  <div class="footer__content">
+    <small>Made by Jacob Erholt</small>
+  </div>
+</footer>

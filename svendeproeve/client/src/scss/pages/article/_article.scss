@@ -1,0 +1,494 @@
+.page--article,
+.page--edit {
+  .banner {
+    overflow: hidden;
+    text-align: center;
+    width: 100%;
+  }
+
+  .playedHours {
+    text-align: center;
+    padding: 1em 3em;
+    color: darken($primary-color, 35);
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+
+    .column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 0.5em 1em;
+      width: 100%;
+
+      &__align {
+        &--start {
+          align-items: flex-start;
+        }
+
+        &--center {
+          align-items: center;
+          text-align: center;
+        }
+
+        &--end {
+          align-items: flex-end;
+        }
+      }
+    }
+
+    &__width {
+      &--full {
+        width: 100%;
+      }
+
+      &--half {
+        width: 100%;
+        margin: auto;
+      }
+    }
+
+    &__padding {
+      &--none {
+        padding: 0;
+      }
+
+      &--small {
+        padding: 1em;
+      }
+
+      &--medium {
+        padding: 2em;
+      }
+
+      &--large {
+        padding: 4em;
+      }
+    }
+  }
+
+  .bold {
+    font-weight: bold;
+  }
+
+  .underline {
+    text-decoration: underline;
+  }
+
+  .italic {
+    font-style: italic;
+  }
+}
+
+.page--article {
+  .container {
+    margin-bottom: 2em;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    margin: .2em;
+  }
+}
+
+
+.page--edit {
+  position: relative;
+  min-height: 100vh;
+
+  .container {
+    &--editor {
+      position: relative;
+      border: solid 2px darken($primary-border-color, 20);
+      transition: border-color 0.2s ease-in-out;
+      justify-content: center;
+      margin-top: .5em;
+      margin-bottom: .5em;
+
+      .column {
+        cursor: pointer;
+
+        transition: border-color 0.2s ease-in-out;
+        border: solid 1px darken($primary-border-color, 20);
+      }
+
+      &:hover {
+        border-color: $primary-border-color;
+      }
+    }
+
+    &--new {
+      border: $primary-border-color solid 2px;
+      padding: 1em;
+
+      .option {
+        text-align: center;
+        padding: 1em;
+
+      }
+    }
+  }
+
+  .column {
+    &:hover {
+      border: solid 1px $primary-border-color;
+    }
+  }
+
+
+  .content {
+    margin: 1em 0;
+    display: inline-block;
+
+    background-color: $primary-bg-color;
+    color: $primary-color;
+    box-shadow: none;
+    border: solid 1px darken($primary-border-color, 20);
+    transition: border 0.2s ease-in-out;
+    padding: 1em;
+    resize: none;
+    width: 80%;
+    min-height: 150px;
+
+    &--new {
+      border: $primary-border-color solid 2px;
+      padding: 1em;
+
+      .option {
+        text-align: center;
+        padding: 1em;
+
+      }
+    }
+
+    &__textarea {
+      border: darken($primary-border-color, 20) solid 2px;
+      background-color: $primary-bg-color;
+      color: $primary-color;
+      padding: 1em;
+      font-size: 1.2em;
+
+      &::-webkit-scrollbar {
+        width: 10px;
+
+        &-thumb {
+          background-color: $primary-border-color;
+        }
+
+        &-track {
+          background-color: lighten($primary-bg-color, 5);
+          border-left: solid 2px $primary-border-color;
+        }
+      }
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      border-color: $primary-border-color;
+    }
+
+    &.h1,
+    &.h2,
+    &.h3,
+    &.h4,
+    &.h5,
+    &.h6 {
+      padding: 1em;
+      display: inline-block;
+    }
+
+    &.h1 {
+      font-size: 2em;
+    }
+
+    &.h2 {
+      font-size: 1.7em;
+    }
+
+    &.h3 {
+      font-size: 1.6em;
+    }
+
+    &.h4 {
+      font-size: 1, 5em;
+    }
+
+    &.h5 {
+      font-size: 1, 4em;
+    }
+
+    &.h6 {
+      font-size: 1, 3em;
+    }
+
+    &.p {
+      font-size: 1.2em;
+    }
+
+
+  }
+
+  .add-new-content {
+    padding: 0 1em;
+    margin: .5em 0;
+    text-align: right;
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+    width: 100%;
+
+    .button {
+      transition: border-color 0.2s ease-in-out;
+      border: solid 1px darken($primary-border-color, 20);
+    }
+  }
+
+  .submit {
+    border-radius: 25%;
+    cursor: pointer;
+    padding: 2em;
+    background-color: $primary-border-color;
+    color: $primary-color;
+    border: solid 2px $primary-color;
+    margin: 0 3em;
+    transition: background-color, .3s ease-out;
+
+    &:hover {
+      background-color: darken($primary-border-color, 8);
+    }
+  }
+
+  .button,
+  .label {
+    display: inline-block;
+    background-color: $primary-bg-color;
+    padding: 1em;
+    margin: .5em 0;
+    border: solid 1px $primary-border-color;
+    color: $primary-color;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      background-color: lighten($primary-bg-color, $amount: 5);
+    }
+
+    &--danger {
+      background-color: $danger-bg-color;
+      color: $danger-color;
+      border-color: $danger-bg-color;
+
+      &:hover {
+        background-color: $danger-color--hover;
+        color: $danger-color;
+      }
+    }
+  }
+
+  .label.selected {
+    background-color: $primary-color;
+    color: $primary-bg-color;
+
+    &:hover {
+      background-color: darken($primary-color, $amount: 15);
+    }
+  }
+
+  .add-new-container {
+    text-align: end;
+    margin: 1em auto;
+    width: 50%;
+
+    button {
+      padding: 1em;
+      font-size: 1em;
+      background-color: $primary-bg-color;
+      border: solid 1px $primary-border-color;
+      color: $primary-color;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+      margin-left: auto;
+
+      &:hover {
+        background-color: lighten($primary-bg-color, $amount: 5);
+      }
+    }
+  }
+
+  .option {
+    text-align: center;
+  }
+}
+
+
+// Sidebar
+.container-details {
+  position: fixed;
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  height: 30vh;
+  width: 100%;
+  top: 10%;
+  gap: 5em;
+  padding: 1em;
+  right: 0%;
+  background-color: lighten($primary-bg-color, 5);
+  transition: right 0.3s ease-in-out;
+  z-index: 2;
+
+
+  &__close {
+    position: absolute;
+    top: 0;
+    padding: 1em;
+    cursor: pointer;
+  }
+
+  &::-webkit-scrollbar {
+    width: 10px;
+
+    &-thumb {
+      background-color: $primary-border-color;
+    }
+
+    &-track {
+      background-color: lighten($primary-bg-color, 5);
+      // border-left: solid 2px $primary-border-color;
+    }
+  }
+
+  .container__options,
+  .column__options,
+  .content__options {
+    display: flex;
+    align-items: center;
+    border-left: solid 2px $primary-border-color;
+    border-right: solid 2px $primary-border-color;
+    padding: .5em;
+    gap: 2em;
+
+    .container-details__title {
+      display: none;
+    }
+
+    .container-details__option {
+      display: flex;
+      gap: 3em;
+      align-items: center;
+      padding: 0 2em;
+      flex-direction: column;
+      min-width: 300px;
+
+      .options {
+        display: flex;
+      }
+    }
+  }
+}
+
+
+
+@media screen and (min-width: 425px) {}
+
+@media screen and (min-width: 769px) {
+
+  .page--article,
+  .page--edit {
+    .banner {
+      height: 65vh;
+    }
+
+    .playedHours {
+      text-align: unset;
+    }
+
+    .container {
+      flex-direction: row;
+      gap: 2em;
+
+      &__width {
+        &--half {
+          width: 50%;
+        }
+      }
+
+      .column {
+        width: 50%;
+      }
+    }
+  }
+
+
+}
+
+@media screen and (min-width: 1024px) {
+  .container-details {
+    width: 22%;
+    height: 90vh;
+    gap: 2em;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    &__close {
+      right: 0;
+    }
+
+    &::-webkit-scrollbar-track {
+      border-left: solid 2px $primary-border-color;
+    }
+
+    .container__options,
+    .column__options,
+    .content__options {
+      border: none;
+      flex-direction: column;
+
+      .container-details__title {
+        display: block;
+      }
+
+      .container-details__option {
+        display: block;
+        padding: unset;
+        min-width: unset;
+        text-align: center;
+
+        .options {
+          display: block;
+        }
+      }
+
+    }
+
+    .container__options,
+    .column__options {
+      border-bottom: solid 2px $primary-border-color;
+    }
+  }
+  .column {
+    
+    .add-new-content {
+      opacity: 0;
+    }
+
+    &:hover {
+      .add-new-content {
+        opacity: 1;
+      }
+      .button {
+        border-color: $primary-border-color;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1624px) {}

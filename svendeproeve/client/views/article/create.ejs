@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Calystoa is a web service, that allows you to create YOUR perfect online article about your favourite games.">
+  <title>Calystoa | Build Web Article</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <script type="module" src="/js/script.js" defer></script>
+</head>
+
+<body class="page page--build">
+  <%- include('../partials/header.ejs') %>
+    <main>
+      <h1>Welcome <%= user.displayName %>! </h1>
+      <form action="/article/create" method="post">
+        <label for="game">Choose a game to write an article about!</label>
+        <select name="game" id="game" required>
+          <% games.forEach(element=> { %>
+            <option value="<%= element.appid %>">
+              <%= element.name %>
+            </option>
+            <% }); %>
+        </select>
+        <label for="title">Give your article a title</label>
+        <input type="text" required name="title" id="title" placeholder="A very cool title">
+        <label for="description">Descripe your article</label>
+        <textarea name="description" id="description" cols="30" rows="10" placeholder="A very cool description"
+          required></textarea>
+        <input type="submit" value="Create">
+      </form>
+    </main>
+    <%- include('../partials/footer.ejs') %>
+</body>
+
+</html>

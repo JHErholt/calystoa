@@ -1,0 +1,31 @@
+<header class="header">
+  <a class="logo" href="/">
+    <picture>
+      <source media="(max-width: 768px)" srcset="/assets/single_gem.png" />
+      <source media="(min-width: 769px)" srcset="/assets/logo.png" />
+      <img src="/assets/logo.png" alt="logo" />
+    </picture>
+  </a>
+  <% if (user) { %>
+    <div class="header__profile">
+      <picture class="header__profile-image">
+        <source media="(max-width: 767px)" srcset="<%= Object.values(user.photos[1]) %>" />
+        <source media="(min-width: 768px)" srcset="<%= Object.values(user.photos[2]) %>" />
+        <img id="profileImage" src="<%= Object.values(user.photos[2]) %>" alt="Steam profile image">
+      </picture>
+      <div id="profileInfo" class="hidden header__profile-info">
+        <p class="header__profile-name">
+          <%= user.displayName %>
+        </p>
+        <nav>
+          <ul>
+            <li><a href="/user/<%= user.id %>">Profile</a></li>
+            <li><a href="/logout">Logout</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <% } else { %>
+      <a class="steam-image" href="/api/auth/steam"><img src="/assets/steam_login.png" alt="Steam login"></a>
+      <% } %>
+</header>
