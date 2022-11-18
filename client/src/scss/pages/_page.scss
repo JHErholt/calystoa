@@ -1,0 +1,13 @@
+.page {
+  color: $primary-color;
+
+  main {
+    min-height: 90vh;
+    padding: 0 0 3em 0;
+
+    h1 {
+      padding: 1em;
+      display: inline-block;
+    }
+  }
+}

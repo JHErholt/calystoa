@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Calystoa is a web service, that allows you to create YOUR perfect online article about your favourite games.">
+  <title>Calystoa | Profile</title>
+</head>
+
+<link rel="stylesheet" href="/css/main.css">
+<script type="module" src="/js/script.js" defer></script>
+<script src="https://kit.fontawesome.com/d82e8d25cf.js" crossorigin="anonymous"></script>
+
+<body class="page page--profile">
+  <%- include('./partials/header.ejs') %>
+    <main class="profile">
+      <% if (auth) { %>
+        <nav class="profile-navigation">
+          <a href="/article/create">Create new article</a>
+        </nav>
+        <% } %>
+          <section class="profile-content">
+            <div class="profile-content-meta">
+              <picture>
+                <source media="(max-width: 768px)" srcset="<%= profile_owner.photos.small %>" />
+                <source media="(min-width: 769px)" srcset="<%= profile_owner.photos.large %>" />
+                <img src="<%= profile_owner.photos.large %>" alt="Steam profile image">
+              </picture>
+              <h1>
+                <%= profile_owner.username %>
+              </h1>
+            </div>
+            <% if (articles.length) { %>
+              <ul id="articles__wrapper">
+                <% articles.forEach(article=> { %>
+                  <li class="article__snippet">
+                    <article class="article__snippet-container">
+                      <a href="/article/<%= article.id %>">
+                        <img src="<%= article.screenshots[0].path_thumbnail %>" alt="Game image">
+                      </a>
+                      <div class="article__snippet-wrapper">
+                        <div class="article__snippet-content">
+                          <a href="/article/<%= article.id %>">
+                            <h2 class="article__snippet-title">
+                              <%= article.title %>
+                            </h2>
+                          </a>
+                          <p class="article__snippet-description">
+                            <%= article.description %>
+                          </p>
+                        </div>
+                        <div class="article__snippet-content">
+                          <p class="article__snippet-game">
+                            <%= article.appName %>
+                          </p>
+                          <% if (auth) { %>
+                            <div class="article__snippet-actions">
+                              <a href="/article/<%= article._id %>/edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                              <a class="danger" href="/article/<%= article._id %>/delete"><i
+                                  class="fa-solid fa-trash"></i></a>
+                            </div>
+                            <% } %>
+                        </div>
+                      </div>
+                    </article>
+                  </li>
+                  <% }); %>
+              </ul>
+              <% } else { %>
+                <h2 class="no-article">
+                  This user has no articles yet.
+                </h2>
+                <% } %>
+          </section>
+    </main>
+    <%- include('./partials/footer.ejs') %>
+</body>
+
+</html>
