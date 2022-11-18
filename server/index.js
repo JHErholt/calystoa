@@ -37,8 +37,8 @@ passport.deserializeUser((user, done) => { // Deserialize user out of session
 });
 
 passport.use(new SteamStrategy({
-  returnURL: 'https://svendeproeve-jerholt.herokuapp.com/api/auth/steam/return',
-  realm: 'https://svendeproeve-jerholt.herokuapp.com/',
+  returnURL: 'https://calystoa.herokuapp.com/api/auth/steam/return',
+  realm: 'https://calystoa.herokuapp.com/',
   apiKey: process.env.STEAM_API_KEY
 }, function (identifier, profile, done) {
   process.nextTick(function () {
